@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="omar_el_younssi">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="products"/>
+            </not>
+        </preConditions>
+        <createTable tableName="products">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="code" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="text"/>
+            <column name="image" type="text"/>
+            <column name="category" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantity" type="double" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="internal_reference" type="varchar(50)"/>
+            <column name="shell_id" type="bigint"/>
+            <column name="inventory_status" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rating" type="double" defaultValue="0.0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addAutoIncrement tableName="products" columnName="id" columnDataType="bigint"/>
+    </changeSet>
+
+</databaseChangeLog>

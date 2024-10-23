@@ -1,0 +1,19 @@
+server:
+  servlet:
+    context-path: /api/v1
+spring:
+  application:
+    name: ecom_project
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ecommerce_db
+    username: ecommerce_admin
+    password: S3cur3P@ssw0rd!2024
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+    enabled: true
